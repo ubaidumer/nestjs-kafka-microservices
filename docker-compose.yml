@@ -1,0 +1,61 @@
+version: "3"
+
+services:
+  api-gateway:
+    image: ${ECR_REGISTRY}/api-gateway
+    build:
+      context: ./api-gateway
+    restart: always
+    ports:
+      - "3000:3000"
+
+  admin:
+    image: ${ECR_REGISTRY}/admin
+    build:
+      context: ./micro-services/admin
+    restart: always
+    depends_on:
+      - api-gateway
+
+  customer:
+    image: ${ECR_REGISTRY}/customer
+    build:
+      context: ./micro-services/customer
+    restart: always
+    depends_on:
+      - api-gateway
+
+  order:
+    image: ${ECR_REGISTRY}/order
+    build:
+      context: ./micro-services/order
+    restart: always
+    depends_on:
+      - api-gateway
+
+  product:
+    image: ${ECR_REGISTRY}/product
+    build:
+      context: ./micro-services/product
+    restart: always
+    depends_on:
+      - api-gateway
+
+  rider:
+    image: ${ECR_REGISTRY}/rider
+    build:
+      context: ./micro-services/rider
+    restart: always
+    depends_on:
+      - api-gateway
+
+  notification:
+    image: ${ECR_REGISTRY}/notification
+    build:
+      context: ./micro-services/notification
+    restart: always
+    depends_on:
+      - api-gateway
+
+networks:
+  default:

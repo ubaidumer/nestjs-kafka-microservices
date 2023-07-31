@@ -1,0 +1,54 @@
+version: "3"
+
+services:
+  api-gateway:
+    command: >
+      sh -c "npm run production"
+  admin:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+    command: >
+      sh -c "npm run production"
+  customer:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+    command: >
+      sh -c "npm run production"
+  order:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+    command: >
+      sh -c "npm run production"
+  product:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+    command: >
+      sh -c "npm run production"
+  rider:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+    command: >
+      sh -c "npm run production"
+  notification:
+    deploy:
+      resources:
+        limits:
+          cpus: '0.5'
+          memory: 2048M
+    command: >
+      sh -c "npm run production"
